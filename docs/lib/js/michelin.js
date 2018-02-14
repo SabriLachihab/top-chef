@@ -23,7 +23,6 @@ function scrap()
       console.log("IL EXITSTE LE FICHIER");
       var data=fs.readFileSync('restaurant_michelin.json', 'utf8');
       var words=JSON.parse(data);
-      var verb = true;
       var t = 0;
       //console.log(words[key][0]);
       for(var i = 0;i<words[key].length;i++)
@@ -70,7 +69,7 @@ function scrap()
                   }
                   //console.log(u)
                   const fs = require('fs');
-                  fs.writeFile("lafourchette.json",JSON.stringify(lafourchette),'utf8',function(err){
+                  fs.writeFile("lafourchette.json",JSON.stringify(lafourchette, null, 4),'utf8',function(err){
                     if (err) {
                         return console.log(err);
                     }
@@ -163,7 +162,7 @@ function scrap()
                       {
                           console.log(o);
                           const fs = require('fs');
-                          fs.writeFile("restaurant_michelin.json",JSON.stringify(o),'utf8',function(err){
+                          fs.writeFile("restaurant_michelin.json",JSON.stringify(o, null, 4),'utf8',function(err){
                             if (err) {
                                 return console.log(err);
                             }
