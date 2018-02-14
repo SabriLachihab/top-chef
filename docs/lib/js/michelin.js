@@ -11,6 +11,8 @@ var allfourchetterestaurant = {}
 allfourchetterestaurant[key]= []
 var path = require('path');
 var p = 0;
+var lafourchette = {}
+lafourchette[key] = []
 
 
 function scrap()
@@ -58,9 +60,22 @@ function scrap()
                       {
                         u = u+1
                         console.log(restoname)
+                        var data =
+                        {
+                          api : allfourchetterestaurant[key][l],
+                          michelin : words[key][michelinresto(restoname,allfourchetterestaurant[key][l].address.postal_code,words)]
+                        }
+                        lafourchette[key].push(data)
                       }
                   }
-                  console.log(u)
+                  //console.log(u)
+                  const fs = require('fs');
+                  fs.writeFile("lafourchette.json",JSON.stringify(lafourchette),'utf8',function(err){
+                    if (err) {
+                        return console.log(err);
+                    }
+                  });
+                  console.log("ECRITURE DU FICHIER REUSSIT");
                 }
               });
         }
@@ -110,10 +125,37 @@ function scrap()
                         {
                           price =  $('.poi_intro-display-prices').text().trim();
                         }
+                        var chef  = ""
+                        if($('.field__item even').text()!=undefined)
+                        {
+                          chef = $('.field__item even').text()
+                        }
+                        var cuisine = ""
+                        if($('.node_poi-cooking-types').text()!=undefined)
+                        {
+                          cuisine = $('.node_poi-cooking-types').text().trim();
+                        }
+                        var city = ""
+                        if($('.locality')[0]!=undefined)
+                        {
+                          city = $('.locality')[0].children[0].data.trim()
+                        }
+                        var address = ""
+                        if($('.thoroughfare')[0]!=undefined)
+                        {
+                          address = $('.thoroughfare')[0].children[0].data.trim()
+                        }
                         p = p + 1;
                         var data =
                         {
-                            name : name , codepostal : postal , etoile : etoile , price : price
+                            name : name ,
+                            etoile : etoile ,
+                            cuisine : cuisine,
+                            chef : chef,
+                            price : price,
+                            address : address,
+                            codepostal : postal ,
+                            city : city
                         };
                         o[key].push(data)
                       }
@@ -135,8 +177,6 @@ function scrap()
     }
   });
 }
-scrap()
-
 
 String.prototype.sansAccent = function(){
     var accent = [
@@ -172,3 +212,21 @@ function findpostalcode(namerestaurant,postal,jsonfile)
   }
   return postal_code
 }
+
+function michelinresto(namerestaurant,postal,jsonfile)
+{
+  var index = 0
+  for (var i = 0 ; i< jsonfile[key].length ; i++)
+  {
+    if(namerestaurant.includes(jsonfile[key][i]['name'].toUpperCase()))
+    {
+      if( jsonfile[key][i].codepostal==postal)
+      {
+        index = i
+      }
+    }
+  }
+  return index
+}
+
+scrap()
