@@ -15,6 +15,7 @@ function scrap()
       console.log("IL EXITSTE LE FICHIER");
       var data= fs.readFileSync('lafourchette.json', 'utf8');
       var words=JSON.parse(data);
+      //console.log(words);
       var t = 0;
       var find = 0
       for(var i = 0;i<words[key].length;i++)

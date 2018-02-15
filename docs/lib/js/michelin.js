@@ -21,64 +21,7 @@ function scrap()
   fs.stat('restaurant_michelin.json', function(err, stat) {
     if (err==null) {
       console.log("IL EXITSTE LE FICHIER");
-      var data=fs.readFileSync('restaurant_michelin.json', 'utf8');
-      var words=JSON.parse(data);
-      var t = 0;
-      //console.log(words[key][0]);
-      for(var i = 0;i<words[key].length;i++)
-      {
-        var str = words[key][i]['name']
-        str = str.sansAccent();
-        //console.log(str);
-        var newname = 'https://m.lafourchette.com/api/restaurant-prediction?name='+str
-        //console.log(newname);
-        request("https://m.lafourchette.com/api/restaurant-prediction?name="+ str, function (error, response,html) {
-                if (!error && response.statusCode == 200)
-                {
-                    //var $ = cheerio.load(html);
-                    //console.log(html);
-                    var jobj = JSON.parse(html)
-                    for(var j=0;j<jobj.length;j++)
-                    {
-                      //console.log(jobj[j].address.postal_code)
-                      //console.log(i);
-                      allfourchetterestaurant[key].push(jobj[j])
-                      //console.log(allfourchetterestaurant[key].length);
-                    }
-                }
-                t= t+1
-                console.log(t);
-                if(t==words[key].length)
-                {
-                  var u = 0
-                  console.log(allfourchetterestaurant);
-                  for(var l=0;l<allfourchetterestaurant[key].length;l++)
-                  {
-                      var restoname = allfourchetterestaurant[key][l].name.toUpperCase();
-                      if(findpostalcode(restoname,allfourchetterestaurant[key][l].address.postal_code,words)!=0)
-                      {
-                        u = u+1
-                        console.log(restoname)
-                        var data =
-                        {
-                          api : allfourchetterestaurant[key][l],
-                          michelin : words[key][michelinresto(restoname,allfourchetterestaurant[key][l].address.postal_code,words)]
-                        }
-                        lafourchette[key].push(data)
-                      }
-                  }
-                  //console.log(u)
-                  const fs = require('fs');
-                  fs.writeFile("lafourchette.json",JSON.stringify(lafourchette, null, 4),'utf8',function(err){
-                    if (err) {
-                        return console.log(err);
-                    }
-                  });
-                  console.log("ECRITURE DU FICHIER REUSSIT");
-                }
-              });
-        }
-        //console.log("FINI");
+      findresto_fourchette()
     }
     else
     {
@@ -229,3 +172,66 @@ function michelinresto(namerestaurant,postal,jsonfile)
 }
 
 scrap()
+
+function findresto_fourchette()
+{
+  const fs =require('fs');
+  var data=fs.readFileSync('restaurant_michelin.json', 'utf8');
+  var words=JSON.parse(data);
+  var t = 0;
+  //console.log(words[key][0]);
+  for(var i = 0;i<words[key].length;i++)
+  {
+    var str = words[key][i]['name']
+    str = str.sansAccent();
+    //console.log(str);
+    var newname = 'https://m.lafourchette.com/api/restaurant-prediction?name='+str
+    //console.log(newname);
+    request("https://m.lafourchette.com/api/restaurant-prediction?name="+ str, function (error, response,html)
+    {
+      if (!error && response.statusCode == 200)
+      {
+          //var $ = cheerio.load(html);
+          //console.log(html);
+          var jobj = JSON.parse(html)
+          for(var j=0;j<jobj.length;j++)
+          {
+            //console.log(jobj[j].address.postal_code)
+            //console.log(i);
+            allfourchetterestaurant[key].push(jobj[j])
+            //console.log(allfourchetterestaurant[key].length);
+          }
+      }
+      t= t+1
+      console.log(t);
+      if(t==words[key].length)
+      {
+        var u = 0
+        console.log(allfourchetterestaurant);
+        for(var l=0;l<allfourchetterestaurant[key].length;l++)
+        {
+            var restoname = allfourchetterestaurant[key][l].name.toUpperCase();
+            if(findpostalcode(restoname,allfourchetterestaurant[key][l].address.postal_code,words)!=0)
+            {
+              u = u+1
+              console.log(restoname)
+              var data =
+              {
+                api : allfourchetterestaurant[key][l],
+                michelin : words[key][michelinresto(restoname,allfourchetterestaurant[key][l].address.postal_code,words)]
+              }
+              lafourchette[key].push(data)
+            }
+        }
+        //console.log(u)
+        const fs = require('fs');
+        fs.writeFile("lafourchette.json",JSON.stringify(lafourchette, null, 4),'utf8',function(err){
+          if (err) {
+              return console.log(err);
+          }
+        });
+        console.log("ECRITURE DU FICHIER REUSSIT");
+      }
+    });
+  }
+}
