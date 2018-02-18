@@ -1,0 +1,309 @@
+> Selected Element
+< <div class="field__item even">Yoshitaka Takayanagi</div>
+> document.getElementById('.field field--name-field-chef field__items').innerHTML
+< TypeError: null is not an object (evaluating 'document.getElementById('.field field--name-field-chef field__items').innerHTML')
+< TypeError: null is not an object (evaluating 'document.getElementById('.field field--name-field-chef field__items').innerHTML')
+> document.getElementById("field field--name-field-chef field__items").innerHTML
+< TypeError: null is not an object (evaluating 'document.getElementById("field field--name-field-chef field__items").innerHTML')
+> document.getElementById("field field--name-field-chef").innerHTML
+< TypeError: null is not an object (evaluating 'document.getElementById("field field--name-field-chef").innerHTML')
+> Selected Element
+< <div class="field__item even">Yoshitaka Takayanagi</div>
+> document.getElementById("field__item even").innerHTML
+< TypeError: null is not an object (evaluating 'document.getElementById("field__item even").innerHTML')
+> document.getElementById(".field__item even").innerHTML
+< TypeError: null is not an object (evaluating 'document.getElementById(".field__item even").innerHTML')
+> Selected Element
+< <div class="field__item even">Yoshitaka Takayanagi</div>
+> document.getElementById('.field field--name-field-chef')
+< null
+> document.getElementById('.field field--name-field-chef field__items')
+< null
+> document.getElementById('.field field--name-field-chef field__items even')
+< null
+> document.getElementsByClassName('.field field--name-field-chef field__items even')
+< HTMLCollection [] (0)
+> document.getElementsByClassName('.field field--name-field-chef field__items even').innerHTML
+< undefined
+> document.getElementsByClassName('.field field--name-field-chef field__items')
+< HTMLCollection [] (0)
+> document.getElementsByClassName('.field field--name-field-chef')
+< HTMLCollection [] (0)
+> document.querySelectorAll('.field field--name-field-chef')
+< NodeList [] (0)
+> document.querySelectorAll('.field field--name-field-chef field__items')
+< NodeList [] (0)
+> document.querySelectorAll('field field--name-field-chef field__items')
+< NodeList [] (0)
+> document.querySelectorAll('div.field.field--name.field-chef.field__items')
+< NodeList [] (0)
+> document.querySelectorAll('div.field-chef')
+< NodeList [] (0)
+> document.querySelectorAll('field-chef')
+< NodeList [] (0)
+> document.querySelectorAll('div')
+< NodeList [<div>, <div class="l-page">, <div class="l-header-inner">, <div class="l-region l-region--header">, <div id="block-ft-b2c-sliding-menu-ft-b2c-sliding-menu-sliding-menu">, <div class="block__content">, <div class="header-menu-trigger-wrapper">, <div class="menu-top-sliding-menu-one-wrapper">, <div class="entity entity-menu-fields menu-fields-menu-top-sliding-menu-one clearfix">, <div class="content">, …] (764)
+> document.querySelectorAll('div.field')
+< NodeList (60) = $12
+0 
+<div class="field field--name-field-address field--type-addressfield field--label-hidden opt-upper-var2__address-wrapper">…</div>
+1 
+<div class="field field--name-field-specials field--type-text-long field--label-above">…</div>
+2 
+<div class="field field--name-field-menu field--type-entityreference field--label-hidden">…</div>
+3 
+<div class="field field--name-field-chef field--type-text field--label-above">…</div>
+4 
+<div class="field field--name-field-chef-word field--type-text-long field--label-above">…</div>
+5 
+<div class="field field--name-field-insp-word field--type-text-with-summary field--label-above">…</div>
+6 
+<div class="field field--name-field-picto field--type-image field--label-hidden">…</div>
+7 
+<div class="field field--name-body field--type-text-with-summary field--label-above">…</div>
+8 
+<div class="field field--name-field-weekly-timetable field--type-office-hours field--label-above">…</div>
+9 
+<div class="field field--name-field-address field--type-addressfield field--label-hidden">…</div>
+10 
+<div class="field field--name-field-website field--type-url field--label-hidden">…</div>
+11 
+<div class="field field--name-field-services field--type-entityreference field--label-above">…</div>
+12 
+<div class="field field--name-field-languages field--type-entityreference field--label-above">…</div>
+13 
+<div class="field field--name-field-payment-type field--type-entityreference field--label-above">…</div>
+14 
+<div class="field field--name-field-rating field--type-fivestar field--label-hidden">…</div>
+15 
+<div class="field field--name-field-table-quality-rating field--type-fivestar field--label-hidden">…</div>
+16 
+<div class="field field--name-field-service-rating field--type-fivestar field--label-hidden">…</div>
+17 
+<div class="field field--name-field-surrounding-quality-rating field--type-fivestar field--label-hidden">…</div>
+18 
+<div class="field field--name-field-quality-price-ratio-rating field--type-fivestar field--label-hidden">…</div>
+19 
+<div class="field field--name-field-ambiance-rating field--type-fivestar field--label-hidden">…</div>
+20 
+<div class="field field--name-field-drinks-rating field--type-fivestar field--label-hidden">…</div>
+21 
+<div class="field field--name-field-text-review field--type-text-long field--label-hidden">…</div>
+22 
+<div class="field field--name-field-rating field--type-fivestar field--label-hidden">…</div>
+23 
+<div class="field field--name-field-table-quality-rating field--type-fivestar field--label-hidden">…</div>
+24 
+<div class="field field--name-field-service-rating field--type-fivestar field--label-hidden">…</div>
+25 
+<div class="field field--name-field-surrounding-quality-rating field--type-fivestar field--label-hidden">…</div>
+26 
+<div class="field field--name-field-quality-price-ratio-rating field--type-fivestar field--label-hidden">…</div>
+27 
+<div class="field field--name-field-ambiance-rating field--type-fivestar field--label-hidden">…</div>
+28 
+<div class="field field--name-field-drinks-rating field--type-fivestar field--label-hidden">…</div>
+29 
+<div class="field field--name-field-text-review field--type-text-long field--label-hidden">…</div>
+30 
+<div class="field field--name-field-rating field--type-fivestar field--label-hidden">…</div>
+31 
+<div class="field field--name-field-table-quality-rating field--type-fivestar field--label-hidden">…</div>
+32 
+<div class="field field--name-field-service-rating field--type-fivestar field--label-hidden">…</div>
+33 
+<div class="field field--name-field-surrounding-quality-rating field--type-fivestar field--label-hidden">…</div>
+34 
+<div class="field field--name-field-quality-price-ratio-rating field--type-fivestar field--label-hidden">…</div>
+35 
+<div class="field field--name-field-ambiance-rating field--type-fivestar field--label-hidden">…</div>
+36 
+<div class="field field--name-field-drinks-rating field--type-fivestar field--label-hidden">…</div>
+37 
+<div class="field field--name-field-text-review field--type-text-long field--label-hidden">…</div>
+38 
+<div class="field field--name-field-rating field--type-fivestar field--label-hidden">…</div>
+39 
+<div class="field field--name-field-table-quality-rating field--type-fivestar field--label-hidden">…</div>
+40 
+<div class="field field--name-field-service-rating field--type-fivestar field--label-hidden">…</div>
+41 
+<div class="field field--name-field-surrounding-quality-rating field--type-fivestar field--label-hidden">…</div>
+42 
+<div class="field field--name-field-quality-price-ratio-rating field--type-fivestar field--label-hidden">…</div>
+43 
+<div class="field field--name-field-ambiance-rating field--type-fivestar field--label-hidden">…</div>
+44 
+<div class="field field--name-field-drinks-rating field--type-fivestar field--label-hidden">…</div>
+45 
+<div class="field field--name-field-text-review field--type-text-long field--label-hidden">…</div>
+46 
+<div class="field field--name-field-rating field--type-fivestar field--label-hidden">…</div>
+47 
+<div class="field field--name-field-table-quality-rating field--type-fivestar field--label-hidden">…</div>
+48 
+<div class="field field--name-field-service-rating field--type-fivestar field--label-hidden">…</div>
+49 
+<div class="field field--name-field-surrounding-quality-rating field--type-fivestar field--label-hidden">…</div>
+50 
+<div class="field field--name-field-quality-price-ratio-rating field--type-fivestar field--label-hidden">…</div>
+51 
+<div class="field field--name-field-ambiance-rating field--type-fivestar field--label-hidden">…</div>
+52 
+<div class="field field--name-field-drinks-rating field--type-fivestar field--label-hidden">…</div>
+53 
+<div class="field field--name-field-text-review field--type-text-long field--label-hidden">…</div>
+54 
+<div class="field field--name-field-link field--type-link-field field--label-hidden">…</div>
+55 
+<div class="field field--name-field-link field--type-link-field field--label-hidden">…</div>
+56 
+<div class="field field--name-field-link field--type-link-field field--label-hidden">…</div>
+57 
+<div class="field field--name-field-link field--type-link-field field--label-hidden">…</div>
+58 
+<div class="field field--name-field-link field--type-link-field field--label-hidden">…</div>
+59 
+<div class="field field--name-field-link field--type-link-field field--label-hidden">…</div>
+
+NodeList Prototype
+
+> document.querySelectorAll('div.field field-chef')
+< NodeList [] (0)
+> document.querySelectorAll('div.field field--name-field-chef')
+< NodeList [] (0)
+> document.querySelectorAll('div.field')
+< NodeList (60) = $15
+0 
+<div class="field field--name-field-address field--type-addressfield field--label-hidden opt-upper-var2__address-wrapper">…</div>
+1 
+<div class="field field--name-field-specials field--type-text-long field--label-above">…</div>
+2 
+<div class="field field--name-field-menu field--type-entityreference field--label-hidden">…</div>
+3 
+<div class="field field--name-field-chef field--type-text field--label-above">…</div>
+4 
+<div class="field field--name-field-chef-word field--type-text-long field--label-above">…</div>
+5 
+<div class="field field--name-field-insp-word field--type-text-with-summary field--label-above">…</div>
+6 
+<div class="field field--name-field-picto field--type-image field--label-hidden">…</div>
+7 
+<div class="field field--name-body field--type-text-with-summary field--label-above">…</div>
+8 
+<div class="field field--name-field-weekly-timetable field--type-office-hours field--label-above">…</div>
+9 
+<div class="field field--name-field-address field--type-addressfield field--label-hidden">…</div>
+10 
+<div class="field field--name-field-website field--type-url field--label-hidden">…</div>
+11 
+<div class="field field--name-field-services field--type-entityreference field--label-above">…</div>
+12 
+<div class="field field--name-field-languages field--type-entityreference field--label-above">…</div>
+13 
+<div class="field field--name-field-payment-type field--type-entityreference field--label-above">…</div>
+14 
+<div class="field field--name-field-rating field--type-fivestar field--label-hidden">…</div>
+15 
+<div class="field field--name-field-table-quality-rating field--type-fivestar field--label-hidden">…</div>
+16 
+<div class="field field--name-field-service-rating field--type-fivestar field--label-hidden">…</div>
+17 
+<div class="field field--name-field-surrounding-quality-rating field--type-fivestar field--label-hidden">…</div>
+18 
+<div class="field field--name-field-quality-price-ratio-rating field--type-fivestar field--label-hidden">…</div>
+19 
+<div class="field field--name-field-ambiance-rating field--type-fivestar field--label-hidden">…</div>
+20 
+<div class="field field--name-field-drinks-rating field--type-fivestar field--label-hidden">…</div>
+21 
+<div class="field field--name-field-text-review field--type-text-long field--label-hidden">…</div>
+22 
+<div class="field field--name-field-rating field--type-fivestar field--label-hidden">…</div>
+23 
+<div class="field field--name-field-table-quality-rating field--type-fivestar field--label-hidden">…</div>
+24 
+<div class="field field--name-field-service-rating field--type-fivestar field--label-hidden">…</div>
+25 
+<div class="field field--name-field-surrounding-quality-rating field--type-fivestar field--label-hidden">…</div>
+26 
+<div class="field field--name-field-quality-price-ratio-rating field--type-fivestar field--label-hidden">…</div>
+27 
+<div class="field field--name-field-ambiance-rating field--type-fivestar field--label-hidden">…</div>
+28 
+<div class="field field--name-field-drinks-rating field--type-fivestar field--label-hidden">…</div>
+29 
+<div class="field field--name-field-text-review field--type-text-long field--label-hidden">…</div>
+30 
+<div class="field field--name-field-rating field--type-fivestar field--label-hidden">…</div>
+31 
+<div class="field field--name-field-table-quality-rating field--type-fivestar field--label-hidden">…</div>
+32 
+<div class="field field--name-field-service-rating field--type-fivestar field--label-hidden">…</div>
+33 
+<div class="field field--name-field-surrounding-quality-rating field--type-fivestar field--label-hidden">…</div>
+34 
+<div class="field field--name-field-quality-price-ratio-rating field--type-fivestar field--label-hidden">…</div>
+35 
+<div class="field field--name-field-ambiance-rating field--type-fivestar field--label-hidden">…</div>
+36 
+<div class="field field--name-field-drinks-rating field--type-fivestar field--label-hidden">…</div>
+37 
+<div class="field field--name-field-text-review field--type-text-long field--label-hidden">…</div>
+38 
+<div class="field field--name-field-rating field--type-fivestar field--label-hidden">…</div>
+39 
+<div class="field field--name-field-table-quality-rating field--type-fivestar field--label-hidden">…</div>
+40 
+<div class="field field--name-field-service-rating field--type-fivestar field--label-hidden">…</div>
+41 
+<div class="field field--name-field-surrounding-quality-rating field--type-fivestar field--label-hidden">…</div>
+42 
+<div class="field field--name-field-quality-price-ratio-rating field--type-fivestar field--label-hidden">…</div>
+43 
+<div class="field field--name-field-ambiance-rating field--type-fivestar field--label-hidden">…</div>
+44 
+<div class="field field--name-field-drinks-rating field--type-fivestar field--label-hidden">…</div>
+45 
+<div class="field field--name-field-text-review field--type-text-long field--label-hidden">…</div>
+46 
+<div class="field field--name-field-rating field--type-fivestar field--label-hidden">…</div>
+47 
+<div class="field field--name-field-table-quality-rating field--type-fivestar field--label-hidden">…</div>
+48 
+<div class="field field--name-field-service-rating field--type-fivestar field--label-hidden">…</div>
+49 
+<div class="field field--name-field-surrounding-quality-rating field--type-fivestar field--label-hidden">…</div>
+50 
+<div class="field field--name-field-quality-price-ratio-rating field--type-fivestar field--label-hidden">…</div>
+51 
+<div class="field field--name-field-ambiance-rating field--type-fivestar field--label-hidden">…</div>
+52 
+<div class="field field--name-field-drinks-rating field--type-fivestar field--label-hidden">…</div>
+53 
+<div class="field field--name-field-text-review field--type-text-long field--label-hidden">…</div>
+54 
+<div class="field field--name-field-link field--type-link-field field--label-hidden">…</div>
+55 
+<div class="field field--name-field-link field--type-link-field field--label-hidden">…</div>
+56 
+<div class="field field--name-field-link field--type-link-field field--label-hidden">…</div>
+57 
+<div class="field field--name-field-link field--type-link-field field--label-hidden">…</div>
+58 
+<div class="field field--name-field-link field--type-link-field field--label-hidden">…</div>
+59 
+<div class="field field--name-field-link field--type-link-field field--label-hidden">…</div>
+
+NodeList Prototype
+
+> document.querySelectorAll('div.field field--name-field-chef')
+< NodeList (0) = $16
+No Properties
+
+NodeList Prototype
+
+> document.querySelectorAll('div.field--name-field-chef')
+< NodeList [<div class="field field--name-field-chef field--type-text field--label-above">] (1)
+> document.querySelectorAll('div.field--name-field-chef').innerHTML
+< undefined

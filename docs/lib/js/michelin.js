@@ -68,9 +68,9 @@ function scrap()
                           price =  $('.poi_intro-display-prices').text().trim();
                         }
                         var chef  = ""
-                        if($('.field__item even').text()!=undefined)
+                        if($('.field--name-field-chef').children('.field__items').children('.field__item').first().text()!=undefined)
                         {
-                          chef = $('.field__item even').text()
+                          chef = $('.field--name-field-chef').children('.field__items').children('.field__item').first().text()
                         }
                         var cuisine = ""
                         if($('.node_poi-cooking-types').text()!=undefined)

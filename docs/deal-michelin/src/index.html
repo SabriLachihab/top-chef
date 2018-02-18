@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deal Fourchette</title>
     <style>
        #map {
         height: 400px;
         width: 100%;
        }
     </style>
-  </head>
-  <body>
-    <h3>My Google Maps Demo</h3>
+</head>
+<body>
+    <div id="app">
+        <h1>Deal La Fourchette</h1>
+    </div>
     <div id="map"></div>
     <div style="table_resto">
       <table id="restaurant-discount">
@@ -26,11 +30,11 @@
       function initMap() {
         var geocoder = new google.maps.Geocoder();
         var uluru = {lat: 46.8566, lng: 1.3522};
-        var address = "51 rue Jouffroy-d'Abbans 75017 Paris 17";
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 5,
           center: uluru
         });
+        var address = "";
         geocoder.geocode( { 'address': address}, function(results, status) {
           if (status == 'OK') {
             map.setCenter(results[0].geometry.location);
@@ -55,24 +59,24 @@
     </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
-      $(document).ready(function()
+  $(document).ready(function()
+  {
+    $.getJSON("./../../lib/js/lafourchettediscount.json",function(data)
+    {
+      var restaurant = ""
+      $.each(data.Restaurant,function(key,value)
       {
-        $.getJSON("./lib/js/lafourchettediscount.json",function(data)
-        {
-          var restaurant = ""
-          $.each(data.Restaurant,function(key,value)
-          {
-            restaurant += "<tr>";
-            restaurant += "<td>" + value.lafourchetteapi.api.name +" ( "+value.lafourchetteapi.michelin.etoile+" étoiles )"+ "</td>";
-            restaurant += "<td>" + value.lafourchetteapi.michelin.address+" , "+value.lafourchetteapi.michelin.codepostal+" "+value.lafourchetteapi.michelin.city +"</td>";
-            restaurant += "<td>" + value.reduction.title+"</td>";
-            restaurant += "<td>" + value.reduction.exclusions+ "</td>";
-            restaurant += "<td>" + value.lafourchetteapi.michelin.price+ "</td>"
-            restaurant += "</tr>";
-          });
-          $('#restaurant-discount').append(restaurant)
-        });
+        restaurant += "<tr>";
+        restaurant += "<td>" + value.lafourchetteapi.api.name +" ( "+value.lafourchetteapi.michelin.etoile+" Ã©toiles )"+ "</td>";
+        restaurant += "<td>" + value.lafourchetteapi.michelin.address+" , "+value.lafourchetteapi.michelin.codepostal+" "+value.lafourchetteapi.michelin.city +"</td>";
+        restaurant += "<td>" + value.reduction.title+"</td>";
+        restaurant += "<td>" + value.reduction.exclusions+ "</td>";
+        restaurant += "<td>" + value.lafourchetteapi.michelin.price+ "</td>"
+        restaurant += "</tr>";
       });
-    </script>
-  </body>
+      $('#restaurant-discount').append(restaurant)
+    });
+  });
+</script>
+</body>
 </html>
