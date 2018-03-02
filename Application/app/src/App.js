@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import logo from './fourchette.jpg';
-import etoile from './1etoile.png';
 import './App.css';
 import ReactTable from 'react-table'
-import { Modal, Button, Accordion, PanelGroup, Panel,Table } from 'react-bootstrap'
 import pricefourchette from './deals.json'
 import ReactDOM from 'react-dom';
 const data = [ ]
