@@ -4,7 +4,7 @@ Welcome to my LaFourchette V 2.0 WebSite :
    
         node michelin.js = scrapping all restaurants in restaurant.michelin.fr
       
-       node lafourchette.js = find all restaurant with stars in lafourchette.fr ( research with the zip code and the prediction name 
+       node lafourchette.js = find all restaurant with stars in lafourchette.fr ( research with the zip code and the prediction name )
       
        node deal.js = find all deals about this restaurants
       
