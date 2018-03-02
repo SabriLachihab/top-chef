@@ -27,7 +27,7 @@ function scrap()
     {
       for(var j=1;j<80;j++)
       {
-          fetchUrl('https://restaurant.michelin.fr/restaurants/france/restaurants-1-etoile-michelin/restaurants-2-etoiles-michelin/restaurants-3-etoiles-michelin/page-'+j, function(error, meta, body){
+          fetchUrl('https://restaurant.michelin.fr/restaurants/france/restaurants-1-etoile-michelin/restaurants-2-etoiles-michelin/restaurants-3-etoiles-michelin/page-'+j,{'User-Agent' : 'request'}, function(error, meta, body){
               var $ = cheerio.load(body);
               $('.poi-card-link').each(function(i, element)
               {
@@ -87,6 +87,16 @@ function scrap()
                         {
                           address = $('.thoroughfare')[0].children[0].data.trim()
                         }
+                        var inspecteur = ""
+                        if($('.field--name-field-insp-word').children('.field__items').children('.field__item').first().text()!=undefined)
+                        {
+                          inspecteur = $('.field--name-field-insp-word').children('.field__items').children('.field__item').first().text()
+                        }
+                        var motchef = ""
+                        if($('.field--name-field-chef-word').children('.field__items').children('.field__item').first().text()!=undefined)
+                        {
+                          motchef = $('.field--name-field-chef-word').children('.field__items').children('.field__item').first().text()
+                        }
                         p = p + 1;
                         var data =
                         {
@@ -97,7 +107,10 @@ function scrap()
                             price : price,
                             address : address,
                             codepostal : postal ,
-                            city : city
+                            city : city ,
+                            mot_inspecteur : inspecteur,
+                            mot_chef : motchef
+
                         };
                         o[key].push(data)
                       }

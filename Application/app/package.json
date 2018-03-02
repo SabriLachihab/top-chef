@@ -1,14 +1,15 @@
 {
-  "name": "deal-michelin",
+  "name": "app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "google-maps-react": "^1.1.2",
     "react": "^16.2.0",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
-    "react-google-map": "^3.1.1",
-    "react-google-maps-loader": "^4.1.0",
-    "react-scripts": "1.1.1"
+    "react-filterable-table": "^0.3.3",
+    "react-scripts": "1.1.1",
+    "react-table": "^6.8.0",
+    "react-table-filter": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

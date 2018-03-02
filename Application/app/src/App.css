@@ -1,0 +1,98 @@
+.App {
+  background-image: url("background.jpg");
+  background-repeat:no-repeat;
+  background-size:400px 100vh;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 100px;
+}
+
+.App-header {
+  height: 150px;
+  padding: 0px;
+  position:fixed;
+  color: green;
+}
+
+.App-title {
+  font-size: 12px;
+  color : green;
+  margin-top: 40px;
+  margin-left: 0px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+.restaurant {
+  margin: auto;
+  margin-bottom: 40px;
+  background-color: #ffffff;
+  width: 800px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 10);
+  border-radius: 20px;
+  color: black;
+}
+
+.restaurant-name {
+  background-color: green;
+  padding: 20px;
+  color: #ffffff;
+  border-radius: 15px 15px 0 0;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.restaurant-adress
+{
+  pandding : 30px;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.restaurant-stars
+{
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.star{
+  background-image: url('etoile.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+}
+
+.display-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.display-deals{
+
+}
+
+.p1 {
+    text-align: center;
+}
