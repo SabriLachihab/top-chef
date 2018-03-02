@@ -1,4 +1,4 @@
-Welcome to my LaFourchette V 2.O WebSite : 
+Welcome to my LaFourchette V 2.0 WebSite : 
 
     In Server Folder : 
    
