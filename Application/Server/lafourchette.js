@@ -21,27 +21,25 @@ function get_id_restaurant(name,codepostal,michelin,callback)
       {
   			try
         {
-  				if(body.length > 0){
-            //console.log(body.length);
-  					body.forEach(function(element){
-  						if(element.address.postal_code == codepostal)
+					body.forEach(function(element)
+          {
+						if(element.address.postal_code == codepostal)
+            {
+							id = element.id;
+              var data =
               {
-  							id = element.id;
-                var data =
-                {
-                  name : element.name,
-                  id : id,
-                  address : element.address,
-                  michelin : michelin
-                }
-  							callback(data);
-  						}
-  					});
-  				}
+                name : element.name,
+                id : id,
+                address : element.address,
+                michelin : michelin
+              }
+							callback(data);
+						}
+  				});
   			}
         catch(error)
         {
-  				//console.log(error);
+  				console.log(error);
   			}
 		  }
     }
@@ -71,7 +69,7 @@ String.prototype.noAccent = function(){
 
 
 
-function getrestaurant()
+function getrestaurant_in_lafourchette()
 {
   if(fs.existsSync('restaurant_michelin.json'))
 	{
@@ -107,10 +105,10 @@ function getrestaurant()
   }
   else
   {
-    console.log("WARNING : ");
-    console.log("Please excute this command line : "+" node michelin.js");
+    console.log("WARNING : The File don't Exist");
+    console.log("Please excute this command line : node michelin.js");
     console.log("THANKS YOU");
   }
 }
 
-getrestaurant()
+getrestaurant_in_lafourchette()

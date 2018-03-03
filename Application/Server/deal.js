@@ -24,8 +24,6 @@ function get_deals(id,api,callback)
       {
   			try
         {
-  				if(body.length > 0){
-            //console.log("YES");
             body.forEach(function(element)
             {
               if(element.is_special_offer == true && element.is_menu == true)
@@ -60,7 +58,6 @@ function get_deals(id,api,callback)
               }
               callback(dealpromo)
             }
-          }
         }
         catch(error)
         {
@@ -76,42 +73,49 @@ function get_deals(id,api,callback)
 
 function find_deals()
 {
-  if(fs.existsSync('restaurant_lafourchette.json'))
-	{
-    console.log("The file doesn't exist");
-  	console.log("Start the scrapping so please don't touch the terminal command")
-    var jsonobj = JSON.parse(fs.readFileSync('restaurant_lafourchette.json', 'utf8'));
-    var total = jsonobj['Restaurant'].length;
-    jsonobj['Restaurant'].forEach(function(restaurant)
-    {
-      get_deals(restaurant.id,restaurant,function(data)
+  if(!fs.existsSync('deals.json'))
+  {
+    if(fs.existsSync('restaurant_lafourchette.json'))
+  	{
+      console.log("The file doesn't exist");
+    	console.log("Start the scrapping so please don't touch the terminal command")
+      var jsonobj = JSON.parse(fs.readFileSync('restaurant_lafourchette.json', 'utf8'));
+      var total = jsonobj['Restaurant'].length;
+      jsonobj['Restaurant'].forEach(function(restaurant)
       {
-        deals['Restaurant'].push(data);
-        fs.writeFile('deals.json', JSON.stringify(deals, null, 4), 'utf8', function(error){
+        get_deals(restaurant.id,restaurant,function(data)
+        {
+          deals['Restaurant'].push(data);
+          fs.writeFile('deals.json', JSON.stringify(deals, null, 4), 'utf8', function(error){
+          if(error)
+          {
+            return console.log(error);
+          }
+            else{
+              console.log("we found "+ deals['Restaurant'].length +" restaurants with stars and deals in France");
+            }
+            })
+        fs.writeFile('./../app/src/deals.json', JSON.stringify(deals, null, 4), 'utf8', function(error){
         if(error)
         {
           return console.log(error);
         }
           else{
-            console.log("we found "+ deals['Restaurant'].length +" restaurants with stars and deals in France");
           }
           })
-      fs.writeFile('./../app/src/deals.json', JSON.stringify(deals, null, 4), 'utf8', function(error){
-      if(error)
-      {
-        return console.log(error);
-      }
-        else{
-          console.log("YES");
-        }
-        })
-        });
-    });
+          });
+      });
+    }
+    else
+    {
+      console.log("WARNING : The File don't Exist");
+      console.log("Please excute this command line : "+" node lafourchette.js");
+      console.log("THANKS YOU");
+    }
   }
-  else
-  {
-    console.log("WARNING : ");
-    console.log("Please excute this command line : "+" node lafourchette.js");
+  else {
+    console.log("WARNING : The File Exist");
+    console.log("Please excute this command line : "+" npm start in app folder to show the offers");
     console.log("THANKS YOU");
   }
 }

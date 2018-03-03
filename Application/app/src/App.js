@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import logo from './fourchette.jpg';
 import './App.css';
-import ReactTable from 'react-table'
-import pricefourchette from './deals.json'
+import pricefourchette from './deals.json';
 import ReactDOM from 'react-dom';
+import GoogleMapReact from 'google-map-react';
 const data = [ ]
-var bar = [ ]
 var count = 0
-var i = 0
 var base = "https://www.lafourchette.com"
-var pageurl = ""
 
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-function handleClick() {
- alert('go to ');
-}
 
 class App extends Component {
+
+  static defaultProps = {
+    center: {lat: 59.95, lng: 30.33},
+    zoom: 11
+  };
+
   render() {
     for(var i=0;i<pricefourchette['Restaurant'].length;i++)
     {
@@ -76,32 +77,7 @@ class App extends Component {
         count++;
       }
     }
-    console.log(data)
-
-
-  const columns = [{
-    accessor: 'name' // String-based value accessors!
-  }, {
-    accessor: 'stars',
-  },
-  {
-    accessor : 'adresss'
-  },
-  {
-    accessor : 'type',
-  }
-  ,{
-    accessor : 'reduction',
-
-  },
-  {
-    accessor : 'Info',
-
-  },{
-    id: 'button',
-  accessor: 'link',
-  Cell: ({value}) => (<button onClick={(e) => console.log(value.na)}>Reservation</button>)
-}]
+    alert("We found " + count + " special offers in the LaFourchette");
 
     return (
       <div className="App">
@@ -109,14 +85,30 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to LaFourchette v2.0</h1>
         </header>
-        <div className='restaurants'>{get_restaurants()}</div>
+        <div>
+        	<div className='restaurants'>{get_restaurants()}</div>
         </div>
+      	<div>
+      	//Try Google Maps -> not display the map
+      	<GoogleMapReact
+        bootstrapURLKeys={{ key: 'AIzaSyAtmBBgB5ebIT98Xf1a3DNTzOl-9_uU-k' }}
+        defaultCenter={this.props.center}
+        defaultZoom={this.props.zoom}
+      	>
+	        <AnyReactComponent
+	          lat={59.955413}
+	          lng={30.337844}
+	          text={'Kreyser Avrora'}
+	        />
+        </GoogleMapReact>
+        </div>
+      </div>
     );
   }
 }
 
 function get_restaurants() {
-  let rows = data.map(function(row) {
+  let restaurant = data.map(function(row) {
     return (
       <div className='restaurant'>
         <div className='restaurant-name'>
@@ -131,7 +123,7 @@ function get_restaurants() {
           {get_star_number(row.stars)}
           </ul>
           <p></p>
-          {action_button(row.name,row.id)}
+          {action_button()}
         </div>
         <div>
            <p>Chief : {row.chef}</p>
@@ -163,7 +155,7 @@ function get_restaurants() {
       </div>
     );
   });
-  return rows;
+  return restaurant;
 }
 
 function get_star_number(stars) {
@@ -223,7 +215,7 @@ function Reservation(pageurl) {
     window.open(base)
 }
 
-function action_button(name,id)
+function action_button()
 {
   return <button onClick={Reservation}>Reservation</button>
 }
