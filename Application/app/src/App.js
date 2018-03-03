@@ -4,9 +4,11 @@ import './App.css';
 import pricefourchette from './deals.json';
 import ReactDOM from 'react-dom';
 import GoogleMapReact from 'google-map-react';
-const data = [ ]
+var data = []
 var count = 0
+var restaurantspecialoffer = [];
 var base = "https://www.lafourchette.com"
+var str = ""
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -75,9 +77,15 @@ class App extends Component {
       if(pricefourchette['Restaurant'][i].deal.Special.length>0)
       {
         count++;
+        restaurantspecialoffer.push("\r  "+pricefourchette['Restaurant'][i].api.name+" ( "+pricefourchette['Restaurant'][i].api.michelin.etoile + stretoile+") " +" was "+pricefourchette['Restaurant'][i].deal.Special.length+ " special offers in lafourchette.fr")
       }
     }
-    alert("We found " + count + " special offers in the LaFourchette");
+    for(var i=0;i<restaurantspecialoffer.length;i++)
+    {
+      str += restaurantspecialoffer[i]
+    }
+
+    alert("We found " + count + " special offers in the LaFourchette : "+str);
 
     return (
       <div className="App">
